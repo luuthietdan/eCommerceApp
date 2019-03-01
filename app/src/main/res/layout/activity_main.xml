@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/colorbackground"
+
     tools:context=".MainActivity">
     <ImageView
         android:id="@+id/imgIcon"
@@ -45,7 +45,7 @@
         android:layout_marginRight="40dp"
         android:layout_above="@id/btnGetLogin"
         android:text="@string/join_now"
-        android:textColor="@android:color/white"
+        android:textColor="@color/purple"
         android:textStyle="bold"
         android:textSize="16sp"/>
 
