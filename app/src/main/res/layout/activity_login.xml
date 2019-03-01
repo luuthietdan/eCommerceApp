@@ -15,7 +15,7 @@
         android:layout_marginTop="100dp"
         />
     <EditText
-        android:id="@+id/edtPhoneNumber"
+        android:id="@+id/edtPhoneNumberLogin"
         android:layout_below="@+id/imgTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,8 +30,8 @@
 
         />
     <EditText
-        android:id="@+id/edtPassword"
-        android:layout_below="@+id/edtPhoneNumber"
+        android:id="@+id/edtPasswordLogin"
+        android:layout_below="@+id/edtPhoneNumberLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -46,7 +46,7 @@
         android:id="@+id/linearCheckBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edtPassword"
+        android:layout_below="@id/edtPasswordLogin"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
         <com.rey.material.widget.CheckBox
