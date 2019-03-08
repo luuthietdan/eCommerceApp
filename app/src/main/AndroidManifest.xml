@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ecommerceapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,7 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".CategoryProduct.ClothesActivity"></activity>
+        <activity android:name=".CategoryProduct.PhoneActivity" />
+        <activity android:name=".CategoryProduct.WineActivity" />
+        <activity android:name=".CategoryProduct.FlowerActivity" />
+        <activity android:name=".CategoryProduct.FoodActivity" />
+        <activity android:name=".CategoryProduct.LaptopActivity" />
+        <activity android:name=".SetUpActivity" />
+        <activity android:name=".DetailProductActivity" />
+        <activity android:name=".Admin.AddProductActivity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">

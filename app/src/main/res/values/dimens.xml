@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="title">20sp</dimen>
+    <dimen name="size_name_product">20sp</dimen>
+    <dimen name="size_price">16sp</dimen>
+
+    <dimen name="size_amount">16sp</dimen>
+    <dimen name="size_description">13sp</dimen>
 </resources>

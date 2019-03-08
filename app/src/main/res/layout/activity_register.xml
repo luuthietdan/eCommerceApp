@@ -4,71 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".RegisterActivity">
 
     <ImageView
-        android:id="@+id/imgTitle"
-        android:layout_width="200dp"
+        android:id="@+id/imgLogo"
+        android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/title" />
 
     <EditText
-        android:id="@+id/edtName"
+        android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imgTitle"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="40dp"
+        android:layout_below="@+id/imgLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/customstroke"
-        android:hint="@string/name"
-        android:inputType="text"
+        android:drawableLeft="@drawable/email"
 
-        android:padding="10dp"
+        android:ems="10"
 
-        />
-
-    <EditText
-        android:id="@+id/edtPhoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtName"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/customstroke"
-        android:hint="@string/hint_phone_number"
-        android:inputType="phone"
-        android:padding="10dp"
-        />
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtPhoneNumber"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="40dp"
+        android:layout_below="@+id/edtEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:background="@drawable/customstroke"
-        android:hint="Password..."
+        android:drawableLeft="@drawable/password"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/edtConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/customstroke"
+        android:drawableLeft="@drawable/password"
+        android:ems="10"
+        android:hint="Confirm Password"
         android:inputType="textPassword"
         android:padding="10dp" />
 
     <Button
-        android:id="@+id/btnCreateAccount"
+
+        android:id="@+id/btnCreate"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edtPassword"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/custombutton"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@+id/edtConfirmPassword"
         android:text="@string/create_account"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/title" />
-
-
+        android:background="@drawable/custombutton"/>
 </RelativeLayout>

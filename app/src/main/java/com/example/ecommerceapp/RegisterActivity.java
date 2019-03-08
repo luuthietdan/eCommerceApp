@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,15 +25,17 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
+    private EditText edtEmail,edtPassword,edtConfirmPassword;
     private Button btnCreateAccount;
-    private EditText edtName,edtPhoneNumber,edtPassword;
+    private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Init();
+        firebaseAuth=FirebaseAuth.getInstance();
         progressDialog=new ProgressDialog(this);
+        Init();
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,74 +45,75 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void CreateNewAccount() {
-        String name=edtName.getText().toString();
-        String phone=edtPhoneNumber.getText().toString();
+        String email=edtEmail.getText().toString();
         String password=edtPassword.getText().toString();
-        if (TextUtils.isEmpty(name)){
-            Toast.makeText(this, "Please enter your name...", Toast.LENGTH_SHORT).show();
-        }else  if (TextUtils.isEmpty(phone)){
-            Toast.makeText(this, "Please enter your phone...", Toast.LENGTH_SHORT).show();
-        }else  if (TextUtils.isEmpty(password)){
-            Toast.makeText(this, "Please enter your password...", Toast.LENGTH_SHORT).show();
-        }else if (password.length()<6){
-            Toast.makeText(this, "Password must higher 6 character...", Toast.LENGTH_SHORT).show();
-        }else {
-            progressDialog.setTitle("Create Account");
-            progressDialog.setMessage("Please wait while we are checking your information");
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.show();
-            ValidPhoneNumber(name,phone,password);
+        String confirmPassword=edtConfirmPassword.getText().toString();
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(RegisterActivity.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
         }
-
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(RegisterActivity.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
+        }
+        if(TextUtils.isEmpty(confirmPassword)){
+            Toast.makeText(RegisterActivity.this, "Please Enter Confirm Password", Toast.LENGTH_SHORT).show();
+        }
+        if (password.length()<6){
+            Toast.makeText(RegisterActivity.this, "Characters don't below 6. Please enter again.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!password.equals(confirmPassword)){
+            Toast.makeText(RegisterActivity.this, "Password Different Confirm Password. Please Enter Again...", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            progressDialog.setTitle("Creating New Account");
+            progressDialog.setMessage("Please waite, while we are creating new account...");
+            progressDialog.show();
+            progressDialog.setCanceledOnTouchOutside(true);
+            firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        SendUserToSetupActivity();
+                        Toast.makeText(RegisterActivity.this, "You Create Account Successfully.", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                    }
+                    else
+                    {
+                        String message=task.getException().getMessage();
+                        Toast.makeText(RegisterActivity.this, "Error:"+message, Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                    }
+                }
+            });
+        }
     }
 
-    private void ValidPhoneNumber(final String name, final String phone, final String password) {
-        final DatabaseReference DBRef;
-        DBRef= FirebaseDatabase.getInstance().getReference();
-        DBRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!(dataSnapshot.child("Users").child(phone).exists())){
-                    HashMap<String,Object> userMap=new HashMap<>();
-                    userMap.put("name",name);
-                    userMap.put("phone",phone);
-                    userMap.put("password",password);
-                    DBRef.child("Users").child(phone).updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(RegisterActivity.this, "Create account successfully.", Toast.LENGTH_SHORT).show();
-                                progressDialog.dismiss();
-                                Intent intentLogin = new Intent(RegisterActivity.this, LoginActivity.class);
-                                startActivity(intentLogin);
-                            }
-                            else {
-                                Toast.makeText(RegisterActivity.this, "Error: ", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
-                else {
-                    Toast.makeText(RegisterActivity.this, "This " + phone + "already exists", Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-                    Toast.makeText(RegisterActivity.this, "Please try again another phone.", Toast.LENGTH_SHORT).show();
-                    Intent intentLogin = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intentLogin);
-                    finish();
-                }
-            }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser=firebaseAuth.getCurrentUser();
+        if (currentUser!=null){
+            SendUserToMainActivity();
+        }
+    }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+    private void SendUserToMainActivity() {
+        Intent loginIntent=new Intent(RegisterActivity.this,HomeActivity.class);
+        loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(loginIntent);
+        finish();
+    }
+    private void SendUserToSetupActivity() {
+        Intent setupIntent=new Intent(RegisterActivity.this,SetUpActivity.class);
+        setupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(setupIntent);
+        finish();
     }
 
     private void Init() {
-        btnCreateAccount=findViewById(R.id.btnCreateAccount);
-        edtName=findViewById(R.id.edtName);
-        edtPhoneNumber=findViewById(R.id.edtPhoneNumber);
+        edtEmail=findViewById(R.id.edtEmail);
         edtPassword=findViewById(R.id.edtPassword);
+        edtConfirmPassword=findViewById(R.id.edtConfirmPassword);
+        btnCreateAccount=findViewById(R.id.btnCreate);
     }
 }

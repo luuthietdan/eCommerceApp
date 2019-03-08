@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailProductActivity">
+    <include layout="@layout/app_bar_layout"
+            android:id="@+id/toolbar_detail"/>
+    <ImageView
+        android:id="@+id/imgProductDetail"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/toolbar_detail"/>
+    <TextView
+        android:id="@+id/txtNameDetail"
+        android:layout_below="@+id/imgProductDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name Product"
+        android:textSize="@dimen/size_name_product"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/txtPriceDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:layout_below="@id/txtNameDetail"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/size_price"
+        android:layout_centerHorizontal="true"/>
+    <LinearLayout
+        android:id="@+id/linearDescription"
+        android:layout_below="@id/txtPriceDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description: "
+            android:textSize="@dimen/size_description"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/txtDescriptionDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_description"
+            android:text="Detail"/>
+    </LinearLayout>
+    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+        android:id="@+id/btnAmount"
+        android:layout_below="@id/linearDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        app:textSize="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        app:initialNumber="1"
+        app:finalNumber="10"
+        android:layout_marginTop="50dp"
+        app:textColor="@color/orange"
+        >
+    </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
+    <Button
+        android:id="@+id/btnBuy"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/customstroke"
+        android:text="Buy"
+        android:layout_centerHorizontal="true"
+
+        android:layout_below="@+id/btnAmount"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

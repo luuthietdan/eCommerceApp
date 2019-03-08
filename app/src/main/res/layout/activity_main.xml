@@ -19,7 +19,7 @@
         android:layout_below="@id/imgIcon"
         android:text="@string/buy_everything"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/purple"
+        android:textColor="@color/colorPrimaryDark"
 
         android:textSize="@dimen/title"/>
     <Button
@@ -45,7 +45,7 @@
         android:layout_marginRight="40dp"
         android:layout_above="@id/btnGetLogin"
         android:text="@string/join_now"
-        android:textColor="@color/purple"
+        android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold"
         android:textSize="16sp"/>
 
