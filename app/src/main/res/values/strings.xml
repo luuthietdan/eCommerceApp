@@ -23,4 +23,11 @@
     <string name="password">Password</string>
     <string name="country">Country</string>
     <string name="save">Save</string>
+    <string name="shipping">Shipping</string>
+    <string name="wait_getting">Wait getting</string>
+    <string name="wait_excepting">Wait excepting</string>
+    <string name="rate">Rate</string>
+    <string name="wait_accepting">Wait accepting</string>
+    <string name="log_out">Log out</string>
+    <string name="add_to_cart">Add to cart</string>
 </resources>

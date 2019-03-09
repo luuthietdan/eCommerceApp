@@ -6,4 +6,6 @@
 
     <dimen name="size_amount">16sp</dimen>
     <dimen name="size_description">13sp</dimen>
+    <dimen name="size_user_name">18sp</dimen>
+    <dimen name="size_email">16sp</dimen>
 </resources>

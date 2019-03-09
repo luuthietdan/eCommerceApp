@@ -9,8 +9,8 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
         android:layout_margin="10dp"
 
         android:elevation="3dp"
@@ -24,7 +24,7 @@
             <ImageView
                 android:id="@+id/imgProductSuggestion"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:layout_gravity="center"
 
                 />
@@ -45,26 +45,28 @@
                 android:textColor="@color/orange"
                 android:textSize="@dimen/size_price"
                 android:layout_gravity="center"/>
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal">-->
-                <!--<ImageView-->
-                    <!--android:layout_width="15dp"-->
-                    <!--android:layout_height="15dp"-->
-                    <!--android:background="@drawable/like"-->
-                    <!--android:layout_marginLeft="30dp"/>-->
-                <!--<TextView-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Total"/>-->
-                <!--<ImageView-->
-                    <!--android:layout_width="15dp"-->
-                    <!--android:layout_height="15dp"-->
-                    <!--android:background="@drawable/rate"-->
-                    <!--android:layout_marginLeft="300dp"/>-->
-            <!--</LinearLayout>-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+            >
+                <ImageButton
+                    android:id="@+id/imgLikeSuggestion"
+                    android:layout_marginTop="2dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/like"
+                   />
+                <TextView
+                    android:id="@+id/txtTotalLike"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total"/>
+            </LinearLayout>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

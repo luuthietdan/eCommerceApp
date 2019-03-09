@@ -20,26 +20,34 @@
                     android:layout_above="@id/navigationView"
                     >
                 </FrameLayout>
-                <LinearLayout
+                <android.support.v7.widget.CardView
+                    android:layout_margin="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:layout_marginLeft="30dp"
+                    android:layout_centerHorizontal="true"
+                    app:cardCornerRadius="10dp">
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/please_enter_your_product_in_here"
-                        android:textColorHint="@android:color/white"
-                        />
-                    <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/search"/>
+                        android:orientation="horizontal">
 
-                </LinearLayout>
+                        <EditText
+                            android:layout_marginLeft="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/please_enter_your_product_in_here"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            />
+                        <ImageView
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/search"/>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
                 <android.support.design.widget.BottomNavigationView
                     android:id="@+id/navigationView"
                     android:layout_width="match_parent"

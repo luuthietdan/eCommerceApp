@@ -29,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btnCreateAccount;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    private String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void CreateNewAccount() {
-        String email=edtEmail.getText().toString();
+        email=edtEmail.getText().toString();
         String password=edtPassword.getText().toString();
         String confirmPassword=edtConfirmPassword.getText().toString();
         if(TextUtils.isEmpty(email)){
@@ -105,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private void SendUserToSetupActivity() {
         Intent setupIntent=new Intent(RegisterActivity.this,SetUpActivity.class);
+
         setupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(setupIntent);
         finish();
