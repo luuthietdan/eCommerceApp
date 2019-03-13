@@ -14,7 +14,6 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
     public CartViewHolder(@NonNull View itemView) {
         super(itemView);
         mView=itemView;
-
     }
     public void setImageCart(String imageCart){
         ImageView imgCart=mView.findViewById(R.id.imgProductCart);

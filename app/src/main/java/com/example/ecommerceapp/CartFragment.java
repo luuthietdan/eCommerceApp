@@ -83,11 +83,12 @@ public class CartFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 for(int i =0;i<mArrayList.size();i++){
-                                    cartMap.put("",mArrayList.get(i));
+                                    //cartMap.put(i + "",mArrayList.get(i));
                                    // Cart cart =  new Cart(" "," "," ","Quan "+i,"15000"," "," ");
-                                   // mDBProductsProcess.push().setValue(mArrayList.get(i));
+                                    mDBProductsProcess.push().setValue(mArrayList.get(i));
                                 }
-                                mDBProductsProcess.setValue(cartMap);
+                                mDBListCart.removeValue();
+                               // mDBProductsProcess.setValue(cartMap);
                                 Log.d("ArrayList: ",String.valueOf(mArrayList.size()));
                             }
                         })
@@ -130,6 +131,7 @@ public class CartFragment extends Fragment {
                             final String cartImage = dataSnapshot.child("image").getValue().toString();
                             final String cartPrice = dataSnapshot.child("price").getValue().toString();
                             final String cartTime = dataSnapshot.child("date").getValue().toString();
+
                             holder.setNameCart(cartName);
                             holder.setImageCart(cartImage);
                             holder.setPriceCart(cartPrice);

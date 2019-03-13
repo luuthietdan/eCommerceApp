@@ -78,6 +78,11 @@ public class DetailProductActivity extends AppCompatActivity {
         cartMap.put("time",saveCurrentTime);
         cartMap.put("quantity",btnAmount.getNumber());
         cartMap.put("discount","");
+        //Quan edited
+        cartMap.put("status","shipping");
+        cartMap.put("image","none");
+
+
         mDBList.child(productId).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

@@ -2,6 +2,7 @@ package com.example.ecommerceapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -35,7 +36,8 @@ public class NotificationFragment extends Fragment {
     private String CurrentUserId="";
 
     private ImageView imgAccepting;
-
+    private ImageView imgGetting;
+    private ImageView imgShipping;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +50,9 @@ public class NotificationFragment extends Fragment {
         txtNameUser=view.findViewById(R.id.txtNameUser);
 
         imgAccepting = view.findViewById(R.id.imgWaitAccept);
+        imgGetting = view.findViewById(R.id.imgWaitGetting);
+        imgShipping = view.findViewById(R.id.imgShipping);
+
 
         mDBUser= FirebaseDatabase.getInstance().getReference().child("Users");
         if (mAuth.getCurrentUser()==null){
@@ -100,6 +105,23 @@ public class NotificationFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        imgGetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),GettingProducts.class);
+                startActivity(intent);
+            }
+        });
+
+        imgShipping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),ShippingProducts.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 

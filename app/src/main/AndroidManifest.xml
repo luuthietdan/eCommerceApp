@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AcceptingProducts"></activity>
+        <activity android:name=".ShippingProducts"></activity>
+        <activity android:name=".GettingProducts" />
+        <activity android:name=".AcceptingProducts" />
         <activity android:name=".CategoryProduct.ClothesActivity" />
         <activity android:name=".CategoryProduct.PhoneActivity" />
         <activity android:name=".CategoryProduct.WineActivity" />
