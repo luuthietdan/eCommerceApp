@@ -1,7 +1,7 @@
 package com.example.ecommerceapp.Model;
 
 public class Cart {
-    private String date,description,id,name,price,quantity,time;
+    private String date,description,id,name,price,quantity,time,status;
 
     public Cart() {
     }
@@ -14,6 +14,15 @@ public class Cart {
         this.price = price;
         this.quantity = quantity;
         this.time = time;
+        status = "accepting";
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getDate() {

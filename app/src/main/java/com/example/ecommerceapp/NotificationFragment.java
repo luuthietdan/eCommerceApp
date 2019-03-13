@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ public class NotificationFragment extends Fragment {
     private FirebaseAuth mAuth;
     private String CurrentUserId="";
 
+    private ImageView imgAccepting;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class NotificationFragment extends Fragment {
         imgUser=view.findViewById(R.id.imgUser);
 
         txtNameUser=view.findViewById(R.id.txtNameUser);
+
+        imgAccepting = view.findViewById(R.id.imgWaitAccept);
 
         mDBUser= FirebaseDatabase.getInstance().getReference().child("Users");
         if (mAuth.getCurrentUser()==null){
@@ -87,6 +92,15 @@ public class NotificationFragment extends Fragment {
 
             }
         });
+
+        imgAccepting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),AcceptingProducts.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
