@@ -100,7 +100,6 @@ public class NotificationFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
         return view;
     }
 
