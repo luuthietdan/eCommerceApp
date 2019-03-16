@@ -38,6 +38,7 @@ public class NotificationFragment extends Fragment {
     private ImageView imgAccepting;
     private ImageView imgGetting;
     private ImageView imgShipping;
+    private ImageView imgRate;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class NotificationFragment extends Fragment {
         imgAccepting = view.findViewById(R.id.imgWaitAccept);
         imgGetting = view.findViewById(R.id.imgWaitGetting);
         imgShipping = view.findViewById(R.id.imgShipping);
+        imgRate = view.findViewById(R.id.imgRate);
 
 
         mDBUser= FirebaseDatabase.getInstance().getReference().child("Users");
@@ -119,6 +121,18 @@ public class NotificationFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),ShippingProducts.class);
                 startActivity(intent);
+            }
+        });
+        imgRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=" + getActivity().getPackageName())));
+                } catch (android.content.ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
+                }
             }
         });
 
