@@ -79,7 +79,7 @@ public class DetailProductActivity extends AppCompatActivity {
         cartMap.put("quantity",btnAmount.getNumber());
         cartMap.put("discount","");
         //Quan edited
-        cartMap.put("status","shipping");
+        cartMap.put("status","accepting");
         cartMap.put("image","none");
 
 
