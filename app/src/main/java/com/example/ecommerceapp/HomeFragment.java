@@ -232,7 +232,8 @@ public class HomeFragment extends Fragment implements IBannerLoadingDone {
                             holder.itemView.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    switch (position) {
+                                    //TODO sửa position => holder.getAdapterPosition();
+                                    switch (holder.getAdapterPosition()) {
                                         case 0:
                                             Intent intentProduct = new Intent(getActivity(), FoodActivity.class);
                                             startActivity(intentProduct);
@@ -263,17 +264,24 @@ public class HomeFragment extends Fragment implements IBannerLoadingDone {
                                     }
 
                                 }
+
                             });
+
                         }
 
+
                     }
+
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
+
                 });
+
             }
+
         };
         rvCategory.setAdapter(adapter);
 

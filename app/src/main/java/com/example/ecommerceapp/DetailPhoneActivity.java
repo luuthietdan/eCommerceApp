@@ -1,9 +1,8 @@
 package com.example.ecommerceapp;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +12,6 @@ import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.ecommerceapp.Model.Food;
-import com.example.ecommerceapp.Model.Users;
-import com.example.ecommerceapp.Prevalent.Prevalent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class DetailProductActivity extends AppCompatActivity {
+public class DetailPhoneActivity extends AppCompatActivity {
     private ImageView imgProductDetail;
     private TextView txtNameDetail,txtDescription,txtPriceDetail;
     private String productId="";
@@ -47,7 +44,7 @@ public class DetailProductActivity extends AppCompatActivity {
         setSupportActionBar(toolbarDetail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Food");
+        getSupportActionBar().setTitle("Phone");
         productId=getIntent().getStringExtra("id");
         //TODO Sửa getProductDetail
         getProductDetail(productId);
@@ -68,7 +65,7 @@ public class DetailProductActivity extends AppCompatActivity {
         saveCurrentDate=currentDate.format(calForDate.getTime());
         SimpleDateFormat currentTime=new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime=currentTime.format(calForDate.getTime());
-        DatabaseReference mDBList=FirebaseDatabase.getInstance().getReference().child("Cart").child(currentId);
+        DatabaseReference mDBList= FirebaseDatabase.getInstance().getReference().child("Cart").child(currentId);
 
         final HashMap<String,Object> cartMap=new HashMap<>();
         cartMap.put("id",productId);
@@ -88,8 +85,8 @@ public class DetailProductActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 //                    if (task.isSuccessful()){
-                        Toast.makeText(DetailProductActivity.this, "Add Product to cart successfully", Toast.LENGTH_SHORT).show();
-                        finish();
+                Toast.makeText(DetailPhoneActivity.this, "Add Product to cart successfully", Toast.LENGTH_SHORT).show();
+                finish();
 //                        Intent intentCart=new Intent(DetailProductActivity.this,CartFragment.class);
 //                        startActivity(intentCart);
 //
@@ -99,16 +96,16 @@ public class DetailProductActivity extends AppCompatActivity {
     }
 
     private void getProductDetail(String productId) {
-        DatabaseReference mDBDetail= FirebaseDatabase.getInstance().getReference().child("Food");
+        DatabaseReference mDBDetail= FirebaseDatabase.getInstance().getReference().child("Phone");
         mDBDetail.child(productId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    Food food=dataSnapshot.getValue(Food.class);
-                    txtNameDetail.setText(food.getName());
-                    txtDescription.setText(food.getDescription());
-                    txtPriceDetail.setText(food.getPrice());
-                    Picasso.get().load(food.getImage()).into(imgProductDetail);
+                    Food Phone=dataSnapshot.getValue(Food.class);
+                    txtNameDetail.setText(Phone.getName());
+                    txtDescription.setText(Phone.getDescription());
+                    txtPriceDetail.setText(Phone.getPrice());
+                    Picasso.get().load(Phone.getImage()).into(imgProductDetail);
                 }
             }
 
