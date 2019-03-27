@@ -49,6 +49,7 @@ public class DetailProductActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Food");
         productId=getIntent().getStringExtra("id");
+        //TODO Sửa getProductDetail
         getProductDetail(productId);
         mAuth=FirebaseAuth.getInstance();
         currentId=mAuth.getCurrentUser().getUid();
