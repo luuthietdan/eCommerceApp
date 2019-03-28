@@ -2,9 +2,7 @@ package com.example.ecommerceapp;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,7 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class DetailPhoneActivity extends AppCompatActivity {
+public class DetailLaptopActivity extends DetailWineActivity {
     private ImageView imgProductDetail;
     private TextView txtNameDetail,txtDescription,txtPriceDetail;
     private String productId="";
@@ -45,7 +43,7 @@ public class DetailPhoneActivity extends AppCompatActivity {
         setSupportActionBar(toolbarDetail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Phone");
+        getSupportActionBar().setTitle("Laptop");
         productId=getIntent().getStringExtra("id");
         //TODO Sửa getProductDetail
         getProductDetail(productId);
@@ -70,7 +68,7 @@ public class DetailPhoneActivity extends AppCompatActivity {
 
         final HashMap<String,Object> cartMap=new HashMap<>();
         //TODO sửa bug put productId
-        cartMap.put("id",productId+"_phone");
+        cartMap.put("id",productId+"_laptop");
         cartMap.put("name",txtNameDetail.getText().toString());
         cartMap.put("price",txtPriceDetail.getText().toString());
         cartMap.put("description",txtDescription.getText().toString());
@@ -83,11 +81,11 @@ public class DetailPhoneActivity extends AppCompatActivity {
         cartMap.put("image","none");
 
         //TODO sửa lỗi intentCart
-        mDBList.child(productId+"_phone").updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mDBList.child(productId+"_laptop").updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 //                    if (task.isSuccessful()){
-                Toast.makeText(DetailPhoneActivity.this, "Add Product to cart successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailLaptopActivity.this, "Add Product to cart successfully", Toast.LENGTH_SHORT).show();
                 finish();
 //                        Intent intentCart=new Intent(DetailProductActivity.this,CartFragment.class);
 //                        startActivity(intentCart);
@@ -98,17 +96,16 @@ public class DetailPhoneActivity extends AppCompatActivity {
     }
 
     private void getProductDetail(String productId) {
-        DatabaseReference mDBDetail= FirebaseDatabase.getInstance().getReference().child("Phone");
+        DatabaseReference mDBDetail= FirebaseDatabase.getInstance().getReference().child("Laptop");
         mDBDetail.child(productId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    Food Phone=dataSnapshot.getValue(Food.class);
-                    txtNameDetail.setText(Phone.getName());
-                    Log.d("PhoneName",Phone.getName());
-                    txtDescription.setText(Phone.getDescription());
-                    txtPriceDetail.setText(Phone.getPrice());
-                    Picasso.get().load(Phone.getImage()).into(imgProductDetail);
+                    Food Laptop=dataSnapshot.getValue(Food.class);
+                    txtNameDetail.setText(Laptop.getName());
+                    txtDescription.setText(Laptop.getDescription());
+                    txtPriceDetail.setText(Laptop.getPrice());
+                    Picasso.get().load(Laptop.getImage()).into(imgProductDetail);
                 }
             }
 

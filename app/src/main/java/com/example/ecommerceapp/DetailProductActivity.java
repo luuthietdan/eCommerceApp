@@ -71,7 +71,8 @@ public class DetailProductActivity extends AppCompatActivity {
         DatabaseReference mDBList=FirebaseDatabase.getInstance().getReference().child("Cart").child(currentId);
 
         final HashMap<String,Object> cartMap=new HashMap<>();
-        cartMap.put("id",productId);
+        //TODO sửa bug put productId
+        cartMap.put("id",productId+"_food");
         cartMap.put("name",txtNameDetail.getText().toString());
         cartMap.put("price",txtPriceDetail.getText().toString());
         cartMap.put("description",txtDescription.getText().toString());
@@ -84,7 +85,7 @@ public class DetailProductActivity extends AppCompatActivity {
         cartMap.put("image","none");
 
         //TODO sửa lỗi intentCart
-        mDBList.child(productId).updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mDBList.child(productId+"_food").updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 //                    if (task.isSuccessful()){

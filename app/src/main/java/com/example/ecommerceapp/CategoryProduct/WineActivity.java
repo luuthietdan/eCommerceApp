@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ecommerceapp.DetailProductActivity;
+import com.example.ecommerceapp.DetailWineActivity;
 import com.example.ecommerceapp.Model.Food;
 import com.example.ecommerceapp.R;
 import com.example.ecommerceapp.ViewHolder.ProductFoodViewHolder;
@@ -74,7 +75,7 @@ public class WineActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull final ProductFoodViewHolder holder, int position, @NonNull final Food model) {
-                final String cartId = getRef(position).getKey();
+                final String cartId = getRef(holder.getAdapterPosition()).getKey();
                 mDBListWine.child(cartId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -96,14 +97,14 @@ public class WineActivity extends AppCompatActivity {
 
                     }
                 });
-//                holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent intentDetail = new Intent(FoodActivity.this, DetailProductActivity.class);
-//                        intentDetail.putExtra("id", model.getId());
-//                        startActivity(intentDetail);
-//                    }
-//                });
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intentDetail = new Intent(WineActivity.this, DetailWineActivity.class);
+                        intentDetail.putExtra("id", model.getId());
+                        startActivity(intentDetail);
+                    }
+                });
             }
 
 

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ecommerceapp.DetailLaptopActivity;
 import com.example.ecommerceapp.DetailProductActivity;
 import com.example.ecommerceapp.Model.Food;
 import com.example.ecommerceapp.R;
@@ -77,7 +78,7 @@ public class LaptopActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull final ProductFoodViewHolder holder, final int position, @NonNull final Food model) {
-                final String cartId = getRef(position).getKey();
+                final String cartId = getRef(holder.getAdapterPosition()).getKey();
                 mDBListLaptop.child(cartId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -103,9 +104,9 @@ public class LaptopActivity extends AppCompatActivity {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        Intent intentDetail = new Intent(LaptopActivity.this, DetailProductActivity.class);
-//                        intentDetail.putExtra("id", model.getId());
-//                        startActivity(intentDetail);
+                        Intent intentDetail = new Intent(LaptopActivity.this, DetailLaptopActivity.class);
+                        intentDetail.putExtra("id", model.getId());
+                        startActivity(intentDetail);
                     }
                 });
             }

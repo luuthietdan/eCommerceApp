@@ -1,5 +1,6 @@
 package com.example.ecommerceapp.CategoryProduct;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ecommerceapp.DetailFlowerActivity;
+import com.example.ecommerceapp.DetailLaptopActivity;
 import com.example.ecommerceapp.Model.Food;
 import com.example.ecommerceapp.R;
 import com.example.ecommerceapp.ViewHolder.ProductFoodViewHolder;
@@ -72,8 +75,8 @@ public class FlowerActivity extends AppCompatActivity {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull final ProductFoodViewHolder holder, int position, @NonNull Food model) {
-                final String cartId = getRef(position).getKey();
+            protected void onBindViewHolder(@NonNull final ProductFoodViewHolder holder, int position, @NonNull final Food model) {
+                final String cartId = getRef(holder.getAdapterPosition()).getKey();
                 mDBListFlower.child(cartId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -93,6 +96,14 @@ public class FlowerActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                    }
+                });
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intentDetail = new Intent(FlowerActivity.this, DetailFlowerActivity.class);
+                        intentDetail.putExtra("id", model.getId());
+                        startActivity(intentDetail);
                     }
                 });
             }

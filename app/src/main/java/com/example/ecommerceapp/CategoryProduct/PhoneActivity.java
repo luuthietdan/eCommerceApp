@@ -76,7 +76,7 @@ public class PhoneActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull final ProductFoodViewHolder holder, int position, @NonNull final Food model) {
-                final String cartId = getRef(position).getKey();
+                final String cartId = getRef(holder.getAdapterPosition()).getKey();
                 mDBListPhone.child(cartId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

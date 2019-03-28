@@ -30,6 +30,10 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".DetailPhoneActivity"/>
+        <activity android:name=".DetailWineActivity"/>
+        <activity android:name=".DetailLaptopActivity"/>
+        <activity android:name=".DetailFlowerActivity"/>
+        <activity android:name=".DetailClothesActivity"/>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
