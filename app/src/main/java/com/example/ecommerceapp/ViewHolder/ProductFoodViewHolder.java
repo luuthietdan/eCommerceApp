@@ -1,5 +1,6 @@
 package com.example.ecommerceapp.ViewHolder;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -22,10 +23,12 @@ public class ProductFoodViewHolder extends RecyclerView.ViewHolder {
     }
     public void setFoodName(String foodName){
         TextView txtFoodName=mView.findViewById(R.id.txtProductNameFood);
+        txtFoodName.setShadowLayer(1.5f,-2,2, Color.GRAY);
         txtFoodName.setText(foodName);
     }
     public void setFoodPrice(String foodPrice){
         TextView txtFoodPrice=mView.findViewById(R.id.txtPriceFood);
+        txtFoodPrice.setShadowLayer(1.5f,-2,2, Color.GRAY);
         txtFoodPrice.setText(foodPrice);
     }
 }

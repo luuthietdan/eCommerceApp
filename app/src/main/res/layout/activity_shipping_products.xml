@@ -4,16 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
+
     tools:context=".ShippingProducts">
 
-    <com.rey.material.widget.ListView
+    <ListView
         android:id="@+id/lsvShippingProducts"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:divider="@color/background"
+        android:dividerHeight="5dp"
+        android:background="@drawable/quanlistviewshape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </com.rey.material.widget.ListView>
+    </ListView>
 </android.support.constraint.ConstraintLayout>
