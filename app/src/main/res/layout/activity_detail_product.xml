@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailProductActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/app_bar_layout"
+        android:id="@+id/toolbar_detail"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/cartViewDetail"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:layout_below="@id/toolbar_detail"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp">
+            <ImageView
+                android:id="@+id/imgProductDetail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:id="@+id/cartViewDetailName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cartViewDetail"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp">
+            <TextView
+                android:id="@+id/txtNameDetail"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name Product"
+                android:textSize="@dimen/size_name_product"
+
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+        </android.support.v7.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/txtPriceDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:layout_below="@id/cartViewDetailName"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/size_price"
+            android:layout_centerHorizontal="true"/>
+        <LinearLayout
+            android:id="@+id/linearDescription"
+            android:layout_below="@id/txtPriceDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: "
+                android:textSize="@dimen/size_description"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/txtDescriptionDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_description"
+                android:text="Detail"/>
+        </LinearLayout>
+
+        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+            android:id="@+id/btnAmount"
+            android:layout_below="@id/linearDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            app:textSize="10dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/white"
+            app:initialNumber="1"
+            app:finalNumber="10"
+            android:layout_marginTop="50dp"
+            app:textColor="@color/orange"
+            >
+        </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
+        <Button
+            android:id="@+id/btnBuy"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/custombutton"
+            android:text="@string/add_to_cart"
+            android:layout_centerHorizontal="true"
+
+            android:layout_below="@+id/btnAmount"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_name_product"
+            android:textColor="@color/white"/>
+
+
+    </RelativeLayout>
+
+</ScrollView>
