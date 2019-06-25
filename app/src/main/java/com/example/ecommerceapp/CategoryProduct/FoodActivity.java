@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ecommerceapp.DetailFlowerActivity;
 import com.example.ecommerceapp.DetailProductActivity;
 import com.example.ecommerceapp.Model.Food;
 import com.example.ecommerceapp.R;
@@ -75,8 +76,8 @@ public class FoodActivity extends AppCompatActivity {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull final ProductFoodViewHolder holder, int position, @NonNull Food model) {
-                final String cartId = getRef(position).getKey();
+            protected void onBindViewHolder(@NonNull final ProductFoodViewHolder holder, int position, @NonNull final Food model) {
+                final String cartId = getRef(holder.getAdapterPosition()).getKey();
                 mDBListFood.child(cartId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -96,6 +97,14 @@ public class FoodActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                    }
+                });
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intentDetail = new Intent(FoodActivity.this, DetailProductActivity.class);
+                        intentDetail.putExtra("id", model.getId());
+                        startActivity(intentDetail);
                     }
                 });
             }

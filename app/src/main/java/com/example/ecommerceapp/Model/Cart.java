@@ -1,9 +1,38 @@
 package com.example.ecommerceapp.Model;
 
 public class Cart {
-    private String date,image,description,id,name,price,quantity,time;
+    private String date,image,description,id,name,price,quantity,time,status;
 
     public Cart() {
+    }
+    public Cart(String date, String description, String id, String name, String price, String quantity, String time) {
+        this.date = date;
+        this.description = description;
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.time = time;
+        status = "accepting";
+    }
+    public Cart(String date, String description, String id, String name, String price, String quantity, String time,String image) {
+        this.date = date;
+        this.description = description;
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.time = time;
+        this.image = image;
+        status = "accepting";
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getDate() {

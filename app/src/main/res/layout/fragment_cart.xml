@@ -34,28 +34,31 @@
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:padding="10dp"/>
+
             <TextView
                 android:id="@+id/txtTotalMoney"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total"
+                android:padding="10dp"
+                android:text="0$"
                 android:textColor="@color/black"
-                android:textSize="30sp"
-                android:padding="10dp"/>
+                android:textSize="30sp" />
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <Button
+                    android:id="@+id/btnShip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerInParent="true"
-                    android:layout_marginRight="10dp"
-                    android:text="Buy"
-                    android:textSize="30sp"
                     android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginRight="10dp"
                     android:background="@drawable/customstroke"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:text="Buy"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="30sp" />
             </RelativeLayout>
 
         </LinearLayout>

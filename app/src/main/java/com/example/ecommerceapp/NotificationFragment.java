@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +70,11 @@ public class NotificationFragment extends Fragment {
     private TextView txtAddress;
     private Location location;
 
+    private ImageView imgAccepting;
+    private ImageView imgGetting;
+    private ImageView imgShipping;
+    private ImageView imgRate;
+
 
     //TODO Lấy vị trí GPS người dùng
     @Override
@@ -82,6 +88,12 @@ public class NotificationFragment extends Fragment {
 
         txtNameUser = view.findViewById(R.id.txtNameUser);
         txtAddress = view.findViewById(R.id.txtAddress);
+
+        imgAccepting = view.findViewById(R.id.imgWaitAccept);
+        imgGetting = view.findViewById(R.id.imgWaitGetting);
+        imgShipping = view.findViewById(R.id.imgShipping);
+        imgRate = view.findViewById(R.id.imgRate);
+
       //  getAddress( getContext(), new GeocoderHandler());
         mDBUser = FirebaseDatabase.getInstance().getReference().child("Users");
         if (mAuth.getCurrentUser() == null) {
@@ -125,6 +137,43 @@ public class NotificationFragment extends Fragment {
 
             }
         });
+
+        imgAccepting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),AcceptingProducts.class);
+                startActivity(intent);
+            }
+        });
+
+        imgGetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),GettingProducts.class);
+                startActivity(intent);
+            }
+        });
+
+        imgShipping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),ShippingProducts.class);
+                startActivity(intent);
+            }
+        });
+        imgRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=" + getActivity().getPackageName())));
+                } catch (android.content.ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
+                }
+            }
+        });
+
         imgUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

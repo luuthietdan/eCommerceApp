@@ -8,4 +8,5 @@
     <color name="gray">#B0BAF5</color>
     <color name="black">#5C5B5B</color>
     <color name="orange">#F54949</color>
+    <color name="background">#00BCD4</color>
 </resources>

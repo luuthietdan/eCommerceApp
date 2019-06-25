@@ -17,8 +17,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ecommerceapp.Adapter.MySliderAdapter;
+import com.example.ecommerceapp.CategoryProduct.ClothesActivity;
+import com.example.ecommerceapp.CategoryProduct.FlowerActivity;
 import com.example.ecommerceapp.CategoryProduct.FoodActivity;
 import com.example.ecommerceapp.CategoryProduct.LaptopActivity;
+import com.example.ecommerceapp.CategoryProduct.PhoneActivity;
+import com.example.ecommerceapp.CategoryProduct.WineActivity;
 import com.example.ecommerceapp.Interface.IBannerLoadingDone;
 import com.example.ecommerceapp.Model.Category;
 
@@ -228,20 +232,34 @@ public class HomeFragment extends Fragment implements IBannerLoadingDone {
                             holder.itemView.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    switch (position){
+                                    switch (holder.getAdapterPosition()){
                                         case 0:
-                                            Intent intentProduct=new Intent(getActivity(), FoodActivity.class);
+                                            Intent intentProduct = new Intent(getActivity(), FoodActivity.class);
                                             startActivity(intentProduct);
                                             break;
                                         case 1:
-                                            Intent intentClothes=new Intent(getActivity(), LaptopActivity.class);
+                                            Intent intentPhone = new Intent(getActivity(), PhoneActivity.class);
+                                            startActivity(intentPhone);
+                                            break;
+                                        case 2:
+                                            Intent intentWine = new Intent(getActivity(), WineActivity.class);
+                                            startActivity(intentWine);
+                                            break;
+                                        case 3:
+                                            Intent intentFlower = new Intent(getActivity(), FlowerActivity.class);
+                                            startActivity(intentFlower);
+                                            break;
+                                        case 4:
+                                            Intent intentClothes = new Intent(getActivity(), ClothesActivity.class);
                                             startActivity(intentClothes);
                                             break;
                                         case 5:
-                                            Intent intentLaptop=new Intent(getActivity(), LaptopActivity.class);
+                                            Intent intentLaptop = new Intent(getActivity(), LaptopActivity.class);
                                             startActivity(intentLaptop);
                                             break;
-                                            default: break;
+
+                                        default:
+                                            break;
                                     }
 
                                 }
@@ -327,7 +345,8 @@ public class HomeFragment extends Fragment implements IBannerLoadingDone {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.child(postKey).hasChild(currentUserId)){
-                        countLikes=(int) dataSnapshot.child(postKey).getChildrenCount();
+                        countLikes=(int) dataSnapshot.
+                                child(postKey).getChildrenCount();
                         imgLikeSuggestion.setImageResource(R.drawable.dislike);
                         txtTotalLike.setText(Integer.toString(countLikes));
 
